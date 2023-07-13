@@ -4,6 +4,7 @@ import ExceptionOrnek.HesapCheck.Hesap;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -46,7 +47,13 @@ public class Main {
         }
         System.out.println(hesap.getBakiye());
 
+        ArrayList<SqlServerDataBase> sqlServerDataBases= new ArrayList<>();
+        for(int i=0 ; i<5;i++) {
+            sqlServerDataBases.add(new SqlServerDataBase("Sql Server DataBase :" + i));
+        }
+        for(SqlServerDataBase s: sqlServerDataBases){
+            System.out.println(s.getX());
+        }
     }
-
 
 }
