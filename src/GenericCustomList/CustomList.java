@@ -1,9 +1,7 @@
 package GenericCustomList;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.stream.Stream;
 
+import java.util.stream.Stream;
 
 public class CustomList<T> implements IMyList<T> {
 
@@ -29,7 +27,7 @@ public class CustomList<T> implements IMyList<T> {
         int i = 0;
         for (T item : myList) {
             if (item == null)
-                continue;
+                break;
             i += 1;
         }
         // return myList.length;
@@ -47,12 +45,24 @@ public class CustomList<T> implements IMyList<T> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size() == 0;
+//        boolean value = false;
+//
+//        for (int i = 0; i < size(); i++) {
+//            if (myList[i] != null) {
+//                value = true;
+//                break;
+//            }
+//
+//        }
+//        return value;
     }
 
     @Override
     public void clear() {
-
+        for(int i = 0; i<size(); i++){
+            myList[i]=null;
+        }
     }
 
     @Override
@@ -60,52 +70,96 @@ public class CustomList<T> implements IMyList<T> {
         if (size() == getCapacity()) {
             T[] tempList = myList;
             myList = (T[]) new Object[getCapacity() * 2];
-            for (int i = 0; i < myList.length; i++) {
+            for (int i = 0; i < tempList.length; i++) {
                 myList[i] = tempList[i];
             }
         }
-            myList[(size())] = data;
+        myList[(size())] = data;
     }
 
 
     @Override
-    public void remove(int index) {
+    public T remove(int index) {
+        if (index >= 0 && index < size()) {
+            T removedElement = myList[index];
 
-    }
-
-    @Override
-    public CustomList<T> sublist(int start, int finish) {
+            while (index < size() - 1) {
+                myList[index] = myList[index + 1];
+                index += 1;
+            }
+            myList[size() - 1] = null;
+            return removedElement;
+        }
         return null;
     }
 
     @Override
+    public CustomList<T> sublist(int start, int finish) {
+        if (start<0 && finish>=size() || start>=finish) return null;
+
+        CustomList<T> customList = new CustomList<>();
+
+        for(int i= start ; i<finish; i++){
+            customList.add(myList[i]);
+        }
+        return customList;
+    }
+
+    @Override
     public boolean contains(T data) {
-        return false;
+        boolean value = false;
+        for(int i = 0 ;i<size();i++) {
+            if(myList[i]==data) { value = true; break;}
+        }
+        return value;
     }
 
     @Override
-    public void set(int index, T data) {
-
+    public T set(int index, T data) {
+        if (index >= 0 && myList[index] != null) {
+            myList[index] = data;
+            return myList[index];
+        } else return null;
     }
 
     @Override
-    public void get(int index) {
+    public T get(int index) {
+//        if(index > size()) return null;
+//        return myList[index];
+        return (index >= 0 && index < size()) ? myList[index] : null; //ternary operator
 
     }
 
     @Override
     public int lastIndexOf(T data) {
-        return 0;
+        int index = -1;
+        for (int i = 0; i < size(); i++) {
+            if (myList[i].equals(data)) {
+                index = i;
+            }
+        }
+        return index;
     }
 
     @Override
     public int indexOf(T data) {
-        return 0;
+        int index = -1;
+        for (int i = 0; i < size(); i++) {
+            if (myList[i].equals(data)) {
+                index = i;
+                break; // differince row of lastIndexOf
+            }
+        }
+        return index;
     }
 
     @Override
     public T[] toArray() {
-        return null;
+        T[] newArray = myList;
+        for (int i= 0; i<size(); i++){
+            newArray[i]=myList[i];
+        }
+        return newArray;
     }
 
     public T[] getMyList() {
@@ -114,5 +168,18 @@ public class CustomList<T> implements IMyList<T> {
 
     public void setMyList(T[] myList) {
         this.myList = myList;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("[");
+        for (int i = 0; i < size(); i++) {
+            result.append(myList[i]);
+            if (i < size() - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("]");
+        return result.toString();
     }
 }

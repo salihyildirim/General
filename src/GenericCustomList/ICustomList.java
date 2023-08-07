@@ -6,6 +6,6 @@ public interface ICustomList<T> {
     boolean isEmpty();
     void clear();
     void add(T data);
-    void remove(int index);
+    T remove(int index);
     String toString();
 }

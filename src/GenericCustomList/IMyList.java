@@ -5,8 +5,8 @@ public interface IMyList<T> extends ICustomList<T>{
     CustomList<T> sublist(int start,int finish);
     boolean contains(T data);
 
-    void set(int index, T data);
-    void get(int index);
+    T set(int index, T data);
+    T get(int index);
 
     int lastIndexOf(T data);
 
