@@ -10,9 +10,8 @@ public class Hesap {
     }
 
     public void bakiyeCikar(double bakiye) throws BakiyeYetersizException {
-        System.out.println("bakiyeCikar calıstı");
+
         if (this.bakiye < bakiye) {
-            System.out.println("if calıstı");
             throw new BakiyeYetersizException("Bakiye Yetersiz");
         }
         this.bakiye -= bakiye;
