@@ -47,11 +47,11 @@ public class Main {
         }
         System.out.println(hesap.getBakiye());
 
-        ArrayList<SqlServerDataBase> sqlServerDataBases= new ArrayList<>();
-        for(int i=0 ; i<5;i++) {
+        ArrayList<SqlServerDataBase> sqlServerDataBases = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
             sqlServerDataBases.add(new SqlServerDataBase("Sql Server DataBase :" + i));
         }
-        for(SqlServerDataBase s: sqlServerDataBases){
+        for (SqlServerDataBase s : sqlServerDataBases) {
             System.out.println(s.getX());
         }
     }

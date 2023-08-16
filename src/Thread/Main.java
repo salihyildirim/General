@@ -1,6 +1,6 @@
 package Thread;
 
-public class Main{
+public class Main {
     public static int amount = 0;
 
     public static void main(String[] args) {
@@ -18,9 +18,9 @@ public class Main{
 //    }
 //    public void run() {
 //        amount++;
-        ThreadKronometre thread1= new ThreadKronometre("thread1");
-        ThreadKronometre thread2= new ThreadKronometre("thread2");
-        ThreadKronometre thread3= new ThreadKronometre("thread3");
+        ThreadKronometre thread1 = new ThreadKronometre("thread1");
+        ThreadKronometre thread2 = new ThreadKronometre("thread2");
+        ThreadKronometre thread3 = new ThreadKronometre("thread3");
         thread1.start();
         thread2.start();
         thread3.start();

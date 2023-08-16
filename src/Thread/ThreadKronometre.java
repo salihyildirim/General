@@ -10,9 +10,10 @@ public class ThreadKronometre implements Runnable {
         System.out.println("Thread oluşturuluyor.. " + threadName);
 
     }
+
     @Override
     public void run() {
-        System.out.println("Thread calisiyor " +threadName);
+        System.out.println("Thread calisiyor " + threadName);
         try {
             for (int i = 0; i <= 10; i++) {
                 System.out.println(i + "inci saniye" + threadName);
@@ -22,8 +23,9 @@ public class ThreadKronometre implements Runnable {
             System.out.println(e.toString());
         }
     }
-    public void start(){
-        System.out.println("thread start " +threadName);
+
+    public void start() {
+        System.out.println("thread start " + threadName);
         System.out.println();
         if (thread == null) {
             thread = new Thread(this, threadName);
