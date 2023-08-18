@@ -2,16 +2,17 @@ package HashSet;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // HASHSET - LinkedHashSet - TreeSet olarak SET'ler 3 adettir
         //Set, AYNI DEĞERİ birden fazla BARINDIRMAZ. Fakat 2 tane olursa hata da vermez.
         //f(x) = x^2 mod7 *sqrt(x) örneğin bu fonk'a ne versen farklı çıkar.
         //Elemanlar sırasız depolanır. Her eleman hashCode() methodu ile bir hash değeri alır.
         //HashMap'deki anahtarların yerine, HashSet'te elemanların değeri kullanılır.
 
-        HashSet<String> hashSet = new HashSet();
+        HashSet<String> hashSet = new HashSet<>();
         hashSet.add("salih");
         hashSet.add("anil");
         //hashSet.add(11);
@@ -31,5 +32,14 @@ public class Main {
         }
 
         hashSet.forEach(i -> System.out.println(i + "= foreachli "));
+        LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>();
+        linkedHashSet.add("salih");
+        linkedHashSet.add("zeynep");
+        linkedHashSet.add("mehmet");
+
+        Iterator<String> ite= linkedHashSet.iterator();
+        while (ite.hasNext()){
+            System.out.println(ite.next());
+        }
     }
 }
