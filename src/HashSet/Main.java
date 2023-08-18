@@ -3,6 +3,7 @@ package HashSet;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.TreeSet;
 
 public class Main {
 
@@ -41,5 +42,18 @@ public class Main {
         while (ite.hasNext()){
             System.out.println(ite.next());
         }
+
+        //TREESET
+        System.out.println("////////// TREESET /////////");
+        TreeSet<Student> students= new TreeSet<>(new CompareName().reversed()); // Sıralama belirtmezsen hata verir.
+        students.add(new Student("Salih",90));
+        students.add(new Student("Ahmet",93));
+        students.add(new Student("Zeynep",100));
+
+        for (Student student: students){
+            System.out.println(student.getName());
+        }
+
     }
+
 }
